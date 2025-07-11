@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}سایت من{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif; 
+            margin: 0; 
+            background: linear-gradient(to left, #f0f8ff, #e0ffff);
+            color: #333;
+        }
+        nav {
+            background-color: #003366;
+            padding: 1em 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: white;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            padding: 12px 24px;
+            margin: 0 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 30px;
+            display: inline-block;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        nav a:hover {
+            background: linear-gradient(to right, #43e97b, #38f9d7);
+            color: #222;
+            transform: scale(1.05);
+        }
+        .content {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            margin: 40px auto;
+            width: 85%;
+            max-width: 1000px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #003366;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/">خانه</a>
+    <a href="/about/">درباره من</a>
+    <a href="/contact/">تماس با من</a>
+    {% if user.is_authenticated %}
+        <a href="/logout/">خروج</a>
+    {% else %}
+        <a href="/login/">ورود</a>
+        <a href="/signup/">ثبت‌نام</a>
+    {% endif %}
+</nav>
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

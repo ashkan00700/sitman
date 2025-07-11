@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}فایل‌های ارسالی{% endblock %}
+
+{% block content %}
+<h2>📂 فایل‌های معمولی</h2>
+{% if files %}
+    <ul>
+        {% for file in files %}
+            {% if not file.is_advertisement %}
+            <li>
+                {{ file.file.name }} توسط {{ file.uploaded_by.username }} در {{ file.uploaded_at|date:"Y-m-d H:i" }}
+                | <a href="{% url 'admin_file_download' file.id %}">دانلود</a>
+                | <a href="{% url 'delete_file' file.id %}">حذف</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>هیچ فایلی وجود ندارد.</p>
+{% endif %}
+
+<hr>
+
+<h2>📢 فایل‌های تبلیغاتی برای ادمین</h2>
+<ul>
+    {% for file in files %}
+        {% if file.is_advertisement %}
+        <li>
+            {{ file.file.name }} توسط {{ file.uploaded_by.username }} در {{ file.uploaded_at|date:"Y-m-d H:i" }}
+            | <a href="{% url 'admin_file_download' file.id %}">دانلود</a>
+            | <a href="{% url 'delete_file' file.id %}">حذف</a>
+        </li>
+        {% endif %}
+    {% empty %}
+        <li>هیچ تبلیغی ارسال نشده است.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

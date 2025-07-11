@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}خانه{% endblock %}
+{% block content %}
+
+<h1>خوش آمدید به سایت من!</h1>
+<p>این صفحه اصلی است.</p>
+
+{% if ad %}
+<div id="fullscreen-ad" style="
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+">
+    <img src="{{ ad.file.url }}" alt="تبلیغ" style="
+        max-width: 90%;
+        max-height: 90%;
+        border: 5px solid #fff;
+        border-radius: 20px;
+        box-shadow: 0 0 20px #fff;
+    ">
+</div>
+
+<script>
+    setTimeout(function() {
+        const ad = document.getElementById("fullscreen-ad");
+        if (ad) {
+            ad.style.transition = "opacity 1s ease";
+            ad.style.opacity = "0";
+            setTimeout(() => ad.remove(), 1000); // remove after fade-out
+        }
+    }, 10000); // نمایش برای 10 ثانیه
+</script>
+{% else %}
+<p>در حال حاضر هیچ تبلیغی نمایش داده نمی‌شود.</p>
+{% endif %}
+
+{% endblock %}

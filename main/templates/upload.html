@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}ارسال فایل{% endblock %}
+{% block content %}
+<h2>ارسال فایل</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">ارسال</button>
+</form>
+{% endblock %}

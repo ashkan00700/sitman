@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}ثبت‌نام{% endblock %}
+
+{% block content %}
+<style>
+    .signup-box {
+        max-width: 400px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px #ccc;
+        direction: rtl;
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 12px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+</style>
+
+<div class="signup-box">
+    <h2>ثبت‌نام</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">ثبت‌نام</button>
+    </form>
+</div>
+{% endblock %}
