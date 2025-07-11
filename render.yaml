@@ -1,20 +1,9 @@
 services:
   - type: web
     name: sitman
-    env: python
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn mysite.wsgi:application"
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn mysite.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: mysite.settings
-      - key: SECRET_KEY
-        generateValue: true
-      - key: DATABASE_URL
-        fromDatabase:
-          name: mydb
-          property: connectionString
-
-databases:
-  - name: mydb
-    databaseName: mydb
-    user: myuser   
