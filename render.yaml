@@ -17,4 +17,4 @@ services:
 databases:
   - name: mydb
     databaseName: mydb
-    user: myuser
+    user: myuser   
