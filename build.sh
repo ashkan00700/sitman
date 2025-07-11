@@ -1,9 +1,3 @@
 #!/usr/bin/env bash
-# نصب وابستگی‌ها
-pip install -r requirements.txt
-
-# اجرای migrate برای دیتابیس
+# اجرای migrate برای اعمال تغییرات دیتابیس
 python manage.py migrate
-
-# جمع‌آوری static files برای سرویس‌دهی در production
-python manage.py collectstatic --noinput
